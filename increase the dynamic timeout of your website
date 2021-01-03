@@ -8,3 +8,19 @@ SetEnvIf Request_URI "wp-admin/admin.php" DynamicTimeout=600
 </Files>
 </IfModule>
 # END increase the dynamic timeout of your website
+
+
+
+
+
+Or
+
+
+All my pleasure. What I can recommend, is if you see the error again, as temporary solution to add the following code to the very top of your .htaccess file and keep it separate from the rest of the coding there:
+
+<IfModule mod_dtimeout.c>
+<Files ~ ".php">
+SetEnvIf Request_URI "index.php" DynamicTimeout=600
+SetEnvIf Request_URI "wp-admin" DynamicTimeout=600
+</Files>
+</IfModule>
